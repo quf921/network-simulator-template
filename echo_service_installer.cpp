@@ -1,0 +1,8 @@
+#include "echo_service_installer.h"
+
+EchoService *EchoServiceInstaller::install(Host *host) {
+    EchoService *echoService;
+    ServiceInstaller::install(host, echoService);
+
+    return echoService;
+}
