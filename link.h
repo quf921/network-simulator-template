@@ -19,6 +19,9 @@ private:
   Node *other(const Node *node) const {
     return node == nodeA_ ? nodeB_ : nodeA_;
   }
+public:
+  // packet을 nodeA에서 nodeB로 전달한다
+  void send(Node *startNode, Packet *packet);
 };
 
 #endif

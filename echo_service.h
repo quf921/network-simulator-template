@@ -12,6 +12,8 @@ class EchoService : public Service {
 
 private:
   EchoService(Host *host, short port) : Service(host, port) {}
+public:
+  void receive(Packet *packet) override;
 };
 
 #endif

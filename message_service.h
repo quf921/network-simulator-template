@@ -21,6 +21,9 @@ private:
 public:
   // 메시지를 전송한다
   void send(std::string message);
+
+  // 메시지를 받는다
+  void receive(Packet *packet) override;
 };
 
 #endif

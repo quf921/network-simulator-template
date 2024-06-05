@@ -5,6 +5,7 @@
 #include "packet.h"
 #include "service.h"
 #include <vector>
+#include <map>
 
 class Host : public Node {
   friend class ServiceInstaller;
@@ -15,6 +16,7 @@ private:
 
   // 설치된 서비스 목록
   std::vector<Service *> services_;
+  std::map<Service *, short> services_table_;
 
 public:
   Address address() { return address_; }
@@ -25,6 +27,9 @@ public:
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet);
+
+  // resiver 구현
+  void receive(Packet *packet) override;
 };
 
 #endif
