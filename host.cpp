@@ -2,9 +2,9 @@
 #include <iostream>
 
 void Host::initialize() {
-    for (int i = 0; i < services_.size(); i++) {
+    for (int i = 0; i < (int)services_.size(); i++) {
         // std::cout << "[test] init get port: " << services_.front()->getPort() << std::endl;
-        if (services_.front()->getPort() == -1) {  // message service defualt port
+        if (services_[i]->getPort() == -1) {  // message service defualt port
             services_[i]->setPort(i+1000);
         }
         services_table_[services_[i]] = services_[i]->getPort();
@@ -25,7 +25,7 @@ void Host::send(Packet *packet) {
 void Host::receive(Packet *packet) {
     for (const auto& service: services_table_) {
         if (service.second == packet->destPort()) {
-            std::cout << "Host #" << id() << ": received packet, destination port:" << packet->destPort() << std::endl;
+            std::cout << "Host #" << id() << ": received packet, destination port: " << packet->destPort() << std::endl;
             service.first->receive(packet);
             return;
         }

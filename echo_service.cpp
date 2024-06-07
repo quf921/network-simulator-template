@@ -2,7 +2,7 @@
 
 void EchoService::receive(Packet *packet) {
     std::cout << "EchoService: received \"" << packet->dataString() << 
-    "\" from " << packet->destAddress().toString() <<":"<<packet->destPort() << 
+    "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort() << 
     ", send reply with same data" << std::endl;
     
     Packet *newPacket = new Packet(
@@ -11,5 +11,7 @@ void EchoService::receive(Packet *packet) {
         packet->dataString()
     );
 
+    delete packet;
+    
     host_->send(newPacket);
 }

@@ -7,5 +7,7 @@ void MessageService::send(std::string message) {
 
 void MessageService::receive(Packet *packet) {
     std::cout << "MessageService: received \"" << packet->dataString() << 
-    "\" from " << packet->destAddress().toString() <<":"<<packet->destPort() << std::endl;
+    "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort() << std::endl;
+    
+    delete packet;
 }
