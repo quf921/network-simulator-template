@@ -4,8 +4,9 @@
 #include "link.h"
 #include "packet.h"
 #include <vector>
+#include "object.h"
 
-class Node {
+class Node : public Object {
   friend class LinkInstaller;
 
 private:
@@ -22,6 +23,8 @@ public:
   int id() const { return id_; }
 
   virtual ~Node() { }
+
+  std::string name() override;
 };
 
 #endif

@@ -3,14 +3,18 @@
 
 #include <string>
 
+#include "object.h"
+
 // 주소를 나타내는 클래스
-class Address {
+class Address : public Object {
 private:
-  int address_;
+  std::string address_;
+
+  std::string name() override { return "Address"; }
 
 public:
-  Address(int address) : address_(address) {}
-  std::string toString() const { return std::to_string(address_); }
+  Address(std::string address) : address_(address) {}
+  std::string toString() const { return address_; }
   bool operator==(const Address &rhs) const { return address_ == rhs.address_; }
 };
 

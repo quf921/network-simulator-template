@@ -8,3 +8,7 @@ void Link::send(Node *startNode, Packet *packet) {
     sendNode->receive(packet);
     
 }
+
+std::string Link::name() {
+    return "Link";
+}

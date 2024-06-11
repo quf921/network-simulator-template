@@ -4,8 +4,9 @@
 #include "address.h"
 #include <string>
 #include <vector>
+#include "object.h"
 
-class Packet {
+class Packet : public Object {
 public:
   Packet(Address srcAddress, Address destAddress, short srcPort, short destPort,
          std::string data)
@@ -16,10 +17,10 @@ public:
     }
   }
 
-  Packet(Address srcAddress, Address destAddress, short srcPort, short destPort,
-         std::vector<char> data)
-      : srcAddress_(srcAddress), destAddress_(destAddress), srcPort_(srcPort),
-        destPort_(destPort), data_(data) {}
+  // Packet(Address srcAddress, Address destAddress, short srcPort, short destPort,
+  //        std::vector<char> data)
+  //     : srcAddress_(srcAddress), destAddress_(destAddress), srcPort_(srcPort),
+  //       destPort_(destPort), data_(data) {}
 
   // 전송자 주소
   Address srcAddress() { return srcAddress_; }
@@ -43,6 +44,10 @@ public:
       str += data_[i];
     }
     return str;
+  }
+
+  std::string name() override {
+    return "Packet";
   }
 
 private:
