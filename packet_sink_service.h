@@ -6,7 +6,11 @@
 
 class PacketSinkService : public Service {
 private:
+  int total_packet;
   PacketSinkService(Host *host, short port);
+public:
+  virtual void receive(Packet *packet) override;
+  int totalPacket() { return total_packet; }
 };
 
 #endif

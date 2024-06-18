@@ -13,6 +13,7 @@ private:
   int id_;
   static int nextId_;
 
+  virtual std::string name() override { return "Node"; }
 protected:
   std::vector<Link *> links;
   
@@ -22,9 +23,7 @@ public:
   Node() : id_(nextId_++) {}
   int id() const { return id_; }
 
-  virtual ~Node() { }
-
-  std::string name() override;
+  virtual ~Node() {}
 };
 
 #endif

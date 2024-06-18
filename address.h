@@ -10,7 +10,7 @@ class Address : public Object {
 private:
   std::string address_;
 
-  std::string name() override { return "Address"; }
+  virtual std::string name() override { return "Address"; }
 
 public:
   Address(std::string address) : address_(address) {}

@@ -9,14 +9,25 @@
 
 class BulkSendService : Service {
   friend class BulkSendServiceInstaller;
+  Address destAddress_;
+  short destPort_;
+  double delay_;
+  double startTime_;
+  double stopTime_;
+
+  std::string data;
 
 private:
   BulkSendService(Host *host, Address destAddress, short destPort,
                   double delay = 1, double startTime = 0,
-                  double stopTime = 10.0) : Service(host, destPort) {};
-
+                  double stopTime = 10.0) : 
+                  Service(host, -1), destAddress_(destAddress), destPort_(destPort),
+                  delay_(delay), startTime_(startTime), stopTime_(stopTime) {}
+  
+  void sendBulk();
 public:
   void receive(Packet *packet) override;
+  void send();
 };
 
 #endif

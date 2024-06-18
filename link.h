@@ -22,10 +22,13 @@ private:
     return node == nodeA_ ? nodeB_ : nodeA_;
   }
 
+  virtual std::string name() override { return "Link"; }
 public:
   // packet을 nodeA에서 nodeB로 전달한다
   void send(Node *startNode, Packet *packet);
-  std::string name() override;
+
+  Node *a() const { return nodeA_; }
+  Node *a() const { return nodeB_; }
 };
 
 #endif

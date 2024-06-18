@@ -25,6 +25,7 @@ public:
 class Simulator {
 private:
   static double time_;
+  static std::priority_queue<Schedule> schedule_queue;
 
 public:
   static double now() { return time_; }
@@ -34,11 +35,18 @@ public:
   static void schedule(double time, std::function<void()> function) {
     // 스케줄 큐에 스케줄을 추가한다.
     // TODO: 구현
+    schedule_queue.push(Schedule(time, function));
   }
 
   static void run() {
     // 모든 스케줄을 실행한다.
     // TODO: 구현
+    while (!schedule_queue.empty()) {
+      Schedule schedule = schedule_queue.top();
+      schedule_queue.pop();
+      schedule.call();
+      time_ += schedule.time();
+    }
   }
 };
 
