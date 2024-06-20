@@ -11,7 +11,7 @@ class Link : public Object{
   friend class LinkInstaller;
 
 private:
-  Link(Node *nodeA, Node *nodeB, double delay=1) : nodeA_(nodeA), nodeB_(nodeB), delay_(delay) {}
+  Link(Node *nodeA, Node *nodeB, double delay) : nodeA_(nodeA), nodeB_(nodeB), delay_(delay) {}
   Node *nodeA_;
   Node *nodeB_;
   double delay_;

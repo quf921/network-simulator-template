@@ -12,6 +12,21 @@ void Host::initialize() {
 }
 
 void Host::send(Packet *packet) {
+    // std::function<void()> func = [this, packet] () {
+    //     std::stringstream ss;
+    //     ss << "Host #" << id() << 
+    //     ": sending packet (from: " << packet->srcAddress().toString() << 
+    //     ", to: " << packet->destAddress().toString() << 
+    //     ", " << packet->dataString().length() << 
+    //     " bytes)";
+    //     log(ss.str());
+        
+    //     Link *link = links[0];
+
+    //     link->send(this, packet);
+    // };
+
+    // Simulator::schedule(links[0]->delay() + Simulator::now(), func);
     std::stringstream ss;
     ss << "Host #" << id() << 
     ": sending packet (from: " << packet->srcAddress().toString() << 
@@ -21,6 +36,7 @@ void Host::send(Packet *packet) {
     log(ss.str());
     
     Link *link = links[0];
+
     link->send(this, packet);
 }
 

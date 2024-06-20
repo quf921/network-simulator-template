@@ -24,7 +24,6 @@ private:
                   Service(host, -1), destAddress_(destAddress), destPort_(destPort),
                   delay_(delay), startTime_(startTime), stopTime_(stopTime) {}
   
-  void sendBulk();
   virtual std::string name() override { return "BulkSendService"; }
 public:
   void receive(Packet *packet) override;

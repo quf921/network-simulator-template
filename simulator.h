@@ -49,7 +49,7 @@ public:
       Schedule schedule = schedule_queue.top();
       schedule_queue.pop();
       schedule.call();
-      time_ += schedule.time();
+      time_ = schedule.time();
     }
   }
 };
