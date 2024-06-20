@@ -2,6 +2,8 @@
 #include <iostream>
 
 void Router::receive(Packet *packet) {
+    std::stringstream ss;
+
     std::string status = "no route for packet";
     RoutingEntry routingEntry = routingTable_.front();
     for (int i = 0; i < (int)routingTable_.size(); i++) {
@@ -14,12 +16,14 @@ void Router::receive(Packet *packet) {
         }
     }
 
-    std::cout << 
+    ss << 
     "Router #" << id() << 
     ": "<< status << " (from: " << packet->srcAddress().toString() << 
     ", to: " << packet->destAddress().toString() << 
     ", " << packet->dataString().length() << 
-    " bytes)" << std::endl;
+    " bytes)";
+    
+    log(ss.str());
 
     if (status == "forwarding packet") {
         routingEntry.nextLink->send(this, packet);

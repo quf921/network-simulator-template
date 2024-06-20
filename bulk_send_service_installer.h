@@ -6,6 +6,8 @@
 #include "service_installer.h"
 
 class BulkSendServiceInstaller : public ServiceInstaller {
+private:
+  virtual std::string name() override { return "BulkSendServiceInstaller"; }
 public:
   BulkSendService *install(Host *host, Address destination, short destPort,
                            double delay = 1, double startTime = 0,

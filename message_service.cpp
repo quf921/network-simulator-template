@@ -6,8 +6,10 @@ void MessageService::send(std::string message) {
 }
 
 void MessageService::receive(Packet *packet) {
-    std::cout << "MessageService: received \"" << packet->dataString() << 
-    "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort() << std::endl;
+    std::stringstream ss;
+    ss << "MessageService: received \"" << packet->dataString() << 
+    "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort();
     
+    log(ss.str());
     delete packet;
 }

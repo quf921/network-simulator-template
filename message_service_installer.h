@@ -12,6 +12,7 @@ private:
   // 목적지 포트
   short destPort_;
 
+  virtual std::string name() override { return "MessageServiceInstaller"; }
 public:
   MessageServiceInstaller(const Address &destAddress, short destPort)
       : destAddress_(destAddress), destPort_(destPort) {}

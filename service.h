@@ -2,10 +2,11 @@
 #define SERVICE_H
 
 #include "node.h"
+#include "object.h"
 
 class Host;
 
-class Service {
+class Service : public Object {
   friend class ServiceInstaller;
 
 protected:
@@ -21,6 +22,8 @@ public:
   short getPort() { return port_; }
   void setPort(short port) { port_ = port; }
   virtual void receive(Packet *packet) = 0;
+
+  std::string name() override { return "Service"; }
 };
 
 #endif

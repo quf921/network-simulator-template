@@ -20,6 +20,10 @@ public:
 
   Schedule(double time, std::function<void()> function)
       : time_(time), function_(function) {}
+  
+  bool operator<(const Schedule &other) const {
+    return time_ > other.time_;
+  }
 };
 
 class Simulator {

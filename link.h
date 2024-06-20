@@ -11,8 +11,7 @@ class Link : public Object{
   friend class LinkInstaller;
 
 private:
-  Link(Node *nodeA, Node *nodeB, double delay) : nodeA_(nodeA), nodeB_(nodeB), delay_(delay) {}
-  Link(Node *nodeA, Node *nodeB) : nodeA_(nodeA), nodeB_(nodeB) {}
+  Link(Node *nodeA, Node *nodeB, double delay=1) : nodeA_(nodeA), nodeB_(nodeB), delay_(delay) {}
   Node *nodeA_;
   Node *nodeB_;
   double delay_;
@@ -27,8 +26,9 @@ public:
   // packet을 nodeA에서 nodeB로 전달한다
   void send(Node *startNode, Packet *packet);
 
-  Node *a() const { return nodeA_; }
-  Node *a() const { return nodeB_; }
+  Node *nodeA() const { return nodeA_; }
+  Node *nodeB() const { return nodeB_; }
+  int delay() const { return delay_; }
 };
 
 #endif

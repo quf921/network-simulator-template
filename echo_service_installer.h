@@ -9,7 +9,7 @@ class EchoServiceInstaller : public ServiceInstaller {
 private:
   // 패킷을 수신할 포트
   short listenPort_;
-
+  virtual std::string name() override { return "EchoServiceInstaller"; }
 public:
   EchoServiceInstaller(short listenPort) : listenPort_(listenPort) {}
 

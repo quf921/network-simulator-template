@@ -18,6 +18,7 @@ private:
   std::vector<Service *> services_;
   std::map<Service *, short> services_table_;
 
+  std::string name() override { return "Host"; }
 public:
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
@@ -31,6 +32,8 @@ public:
 
   // resiver 구현
   void receive(Packet *packet) override;
+
+
 };
 
 #endif

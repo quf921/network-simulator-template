@@ -1,9 +1,12 @@
 #include "echo_service.h"
 
 void EchoService::receive(Packet *packet) {
-    std::cout << "EchoService: received \"" << packet->dataString() << 
+    std::stringstream ss;
+
+    ss << "EchoService: received \"" << packet->dataString() << 
     "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort() << 
-    ", send reply with same data" << std::endl;
+    ", send reply with same data";
+    log(ss.str());
     
     Packet *newPacket = new Packet(
         packet->destAddress(), packet->srcAddress(),

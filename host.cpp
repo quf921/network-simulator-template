@@ -12,27 +12,32 @@ void Host::initialize() {
 }
 
 void Host::send(Packet *packet) {
-    std::cout << "Host #" << id() << 
+    std::stringstream ss;
+    ss << "Host #" << id() << 
     ": sending packet (from: " << packet->srcAddress().toString() << 
     ", to: " << packet->destAddress().toString() << 
     ", " << packet->dataString().length() << 
-    " bytes)" << std::endl;
+    " bytes)";
+    log(ss.str());
     
     Link *link = links[0];
     link->send(this, packet);
 }
 
 void Host::receive(Packet *packet) {
+    std::stringstream ss;
     for (const auto& service: services_table_) {
         if (service.second == packet->destPort()) {
-            std::cout << "Host #" << id() << ": received packet, destination port: " << packet->destPort() << std::endl;
+            ss << "Host #" << id() << ": received packet, destination port: " << packet->destPort();
+            log(ss.str());
             service.first->receive(packet);
             return;
         }
     }
-    std::cout << "Host #" << id() << 
+    ss << "Host #" << id() << 
     ": no service for packet (from: " << packet->srcAddress().toString() << 
     ", to: " << packet->destAddress().toString() << 
     ", " << packet->dataString().length() << 
-    " bytes)" << std::endl;
+    " bytes)";
+    log(ss.str());
 }

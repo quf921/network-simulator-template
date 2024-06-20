@@ -6,6 +6,8 @@
 #include "service_installer.h"
 
 class PacketSinkServiceInstaller : public ServiceInstaller {
+private:
+  virtual std::string name() override { return "PacketSinkServiceInstaller"; }
 public:
   PacketSinkService *install(Host *host, short port);
 };
