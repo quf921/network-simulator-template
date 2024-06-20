@@ -3,7 +3,7 @@
 void EchoService::receive(Packet *packet) {
     std::stringstream ss;
 
-    ss << "EchoService: received \"" << packet->dataString() << 
+    ss << "received \"" << packet->dataString() << 
     "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort() << 
     ", send reply with same data";
     log(ss.str());

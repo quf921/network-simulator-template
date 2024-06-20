@@ -11,21 +11,16 @@ void Router::receive(Packet *packet) {
         // " : "<< packet->destAddress().toString() << " : " << (routingTable_[i].destination == packet->destAddress()) << std::endl;
         if (routingTable_[i].destination == packet->destAddress()) {
             routingEntry = routingTable_[i];
-            status = "forwarding packet";
+            status = "forwarding packet: ";
             break;
         }
     }
 
-    ss << 
-    "Router #" << id() << 
-    ": "<< status << " (from: " << packet->srcAddress().toString() << 
-    ", to: " << packet->destAddress().toString() << 
-    ", " << packet->dataString().length() << 
-    " bytes)";
+    ss << status << packet->toString() << " to " << routingEntry.nextLink->toString();
     
     log(ss.str());
 
-    if (status == "forwarding packet") {
+    if (status == "forwarding packet: ") {
         routingEntry.nextLink->send(this, packet);
     }
 }

@@ -14,6 +14,7 @@ private:
   virtual std::string name() override { return "PacketSinkService"; }
 public:
   virtual void receive(Packet *packet) override;
+  void send() override {};
   int totalPacket() { return total_packet; }
 };
 

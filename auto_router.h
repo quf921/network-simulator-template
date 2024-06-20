@@ -28,7 +28,7 @@ public:
 
     
     // 인접행렬 생성
-    double metrix[100][100];
+    double metrix[1000][1000];
     
     for (int i = 0; i < nodes.size(); i++) {
       for (int j = 0; j < nodes.size(); j++) {
@@ -48,6 +48,7 @@ public:
 
     // 결과 구한 다익스트라 메트릭스에서 호스트에 대한 최단 경로 추적하기(다음 홉 기록)
     // 노드에서 노드간을 기록할 필요는 없음. 결국 호스트로 가는 것이기 때문에
+    // 다익스트라로 구한 인접행렬을 
     for (int i = 0; i < nodes.size(); i++) {
       Node* node = nodes[i];
       Host* host = dynamic_cast<Host*>(node);

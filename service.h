@@ -22,6 +22,7 @@ public:
   short getPort() { return port_; }
   void setPort(short port) { port_ = port; }
   virtual void receive(Packet *packet) = 0;
+  virtual void send() = 0;
 
   std::string name() override { return "Service"; }
 };

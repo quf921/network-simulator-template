@@ -47,9 +47,9 @@ public:
     // TODO: 구현
     while (!schedule_queue.empty()) {
       Schedule schedule = schedule_queue.top();
+      time_ = schedule.time();
       schedule_queue.pop();
       schedule.call();
-      time_ = schedule.time();
     }
   }
 };

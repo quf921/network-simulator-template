@@ -7,7 +7,7 @@ void MessageService::send(std::string message) {
 
 void MessageService::receive(Packet *packet) {
     std::stringstream ss;
-    ss << "MessageService: received \"" << packet->dataString() << 
+    ss << "received \"" << packet->dataString() << 
     "\" from " << packet->srcAddress().toString() <<":"<<packet->srcPort();
     
     log(ss.str());

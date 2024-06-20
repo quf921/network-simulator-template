@@ -1,5 +1,4 @@
 #include "bulk_send_service.h"
-#include "simulator.h"
 
 void BulkSendService::receive(Packet *packet) {
     return;
@@ -13,6 +12,9 @@ void BulkSendService::send() {
                 data.append(std::to_string(i));
             }
             Packet *packet = new Packet(host_->address(), destAddress_, port_, destPort_, data);
+            std::stringstream ss;
+            ss << "sending data";
+            log(ss.str());
             host_->send(packet);
         };
 

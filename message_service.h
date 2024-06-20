@@ -17,9 +17,10 @@ private:
   short destPort_;
   MessageService(Host *host, short port, Address destAddress, short destPort)
       : Service(host, port), destAddress_(destAddress), destPort_(destPort) {}
-
+  virtual std::string name() override { return "MessageService"; }
 public:
   // 메시지를 전송한다
+  void send() override {};
   void send(std::string message);
 
   // 메시지를 받는다

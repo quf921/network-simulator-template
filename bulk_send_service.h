@@ -27,7 +27,7 @@ private:
   virtual std::string name() override { return "BulkSendService"; }
 public:
   void receive(Packet *packet) override;
-  void send();
+  void send() override;
 };
 
 #endif
